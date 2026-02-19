@@ -68,3 +68,9 @@ compile_commands.json
 *.temp
 *.bak
 *.cache
+
+#no extension executable
+test
+out
+t 
+a 
