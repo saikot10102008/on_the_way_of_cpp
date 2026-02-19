@@ -1,0 +1,70 @@
+# Compiled binaries and executables
+*.exe
+*.out
+*.o
+*.obj
+*.app
+*.i*86
+*.x86_64
+*.hex
+a.out
+
+# VSCode
+.vscode/
+*.code-workspace
+.history/
+
+# Zed
+.zed/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Build directories
+build/
+dist/
+out/
+bin/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+install_manifest.txt
+compile_commands.json
+
+# Other IDEs
+.idea/
+*.swp
+*.swo
+*~
+.project
+.cproject
+.settings/
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.cache
