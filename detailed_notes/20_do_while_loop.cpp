@@ -1,5 +1,7 @@
 #include <iostream>
+
 int main() {
+    
     int num = 10;
     
     // DO-WHILE runs the code FIRST, THEN checks condition
