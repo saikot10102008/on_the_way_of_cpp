@@ -12,5 +12,6 @@ int main() {
 
     std::cout<<"Your name is: "<<name;
 
+    // an infinite while loop: while(true){std::cout<<"Infinite loop";}
     return 0;
 }
