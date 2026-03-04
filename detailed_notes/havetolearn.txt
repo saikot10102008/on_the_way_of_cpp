@@ -1,3 +1,4 @@
 operator precedence , associativity of operators with same precedence
 difference between methods and functions
 difference between arguments and parameters
+String concatenation, function signature
