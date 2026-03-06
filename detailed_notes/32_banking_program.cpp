@@ -37,12 +37,14 @@ int main()
         // Read the user's integer choice from the keyboard
         std::cin >> choice;
 
+        //std::cin.clear(); and fflush(stdin); not working as it should so I turned them into comments
+
         // Clear any error flags on cin (in case user entered letters instead of numbers)
-        std::cin.clear(); 
+        // std::cin.clear(); 
 
         // Discard (flush) everything left in the input buffer up to the newline
         // This helps prevent infinite loops when user enters invalid input
-        fflush(stdin);   // Note: fflush(stdin) is non-standard in C++ but commonly used in tutorials for simplicity
+        // fflush(stdin);   // Note: fflush(stdin) is non-standard in C++ but commonly used in tutorials for simplicity
 
         // Decide what to do based on the user's choice (switch is cleaner than many if-else statements here)
         switch(choice) {
