@@ -142,6 +142,9 @@ int main() {
     for (double price : prices) std::cout << "$" << price << " ";
     std::cout << "\n\n";
 
+    // a function can't get the sizeof() working if an array is passed or exactly the memory
+    // location of the array is passed as it just knows the starting memory location
+
     // ==================== CHAPTER 37: SEARCH AN ARRAY (3:13:07) ====================
     std::cout << "\n=== CHAPTER 37: SEARCH AN ARRAY ===\n";
     std::cout << "To find an element, loop through and check each value.\n\n";
