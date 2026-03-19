@@ -1,112 +1,107 @@
 #include <iostream>
-#include <algorithm>    // Required for std::fill()
-using namespace std;
+#include <algorithm>  // Required for std::fill
 
-// syntax for fill function:
-// #include <algorithm>   // ← required for std::fill
-// std::fill( beginning_of_range, end_of_range, value );
-// beginning_of_range → pointer/iterator to first element (e.g. arr or arr + 0)
-// end_of_range → pointer/iterator to one past the last element (e.g. arr + size)
-// value → what you want to fill everything with
+int main() {
+    // Example 1: Basic fill on a C-style array
+    // Declare an array of 5 integers (uninitialized)
+    int numbers[5];
 
-int main()
-{
-    cout << "Demonstration of std::fill() function\n";
-    cout << "=====================================\n\n";
-
-    // =================================================================
-    // What does std::fill() do?
-    // It assigns the same value to every element in a range
-    // Very useful for initializing or resetting arrays / containers
-    // =================================================================
-
-    // ───────────────────────────────────────────────────────────────
-    // Example 1: Fill an entire array with zeros
-    // ───────────────────────────────────────────────────────────────
-    const int SIZE = 12;
-    int numbers[SIZE];
-
-    // Before fill → array contains random garbage values
-    cout << "1. Array before fill (undefined values):\n";
-    for(int i = 0; i < SIZE; i++) {
-        cout << numbers[i] << " ";
+    std::cout << "Array before fill: ";
+    for (int i = 0; i < 5; ++i) {
+        std::cout << numbers[i] << " ";  // Output: garbage values
     }
-    cout << "\n\n";
+    std::cout << std::endl;
 
-    // Fill the whole array with 0
-    fill(numbers, numbers + SIZE, 0);
+    // Fill the entire array with the value 42
+    // For arrays, we use pointers as iterators:
+    // - 'numbers' is a pointer to the first element
+    // - 'numbers + 5' is a pointer to one past the last element
+    std::fill(numbers, numbers + 5, 42);
 
-    cout << "After fill(numbers, numbers + SIZE, 0):\n";
-    for(int i = 0; i < SIZE; i++) {
-        cout << numbers[i] << " ";
+    std::cout << "Array after fill with 42: ";
+    for (int i = 0; i < 5; ++i) {
+        std::cout << numbers[i] << " ";  // Output: 42 42 42 42 42
     }
-    cout << "\n\n";
+    std::cout << std::endl;
 
+    // Example 2: Filling only a portion of an array
+    int partial[10] = {0};  // Initialize all 10 elements to 0
 
-    // ───────────────────────────────────────────────────────────────
-    // Example 2: Fill only part of the array
-    // ───────────────────────────────────────────────────────────────
-    int scores[10] = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
-
-    cout << "2. Original scores:\n";
-    for(int s : scores) cout << s << " ";
-    cout << "\n\n";
-
-    // Set first 5 elements to 999
-    fill(scores, scores + 5, 999);
-
-    cout << "After fill(scores, scores + 5, 999):\n";
-    for(int s : scores) cout << s << " ";
-    cout << "\n\n";
-
-
-    // ───────────────────────────────────────────────────────────────
-    // Example 3: Common real-world use – preparing a game board
-    // ───────────────────────────────────────────────────────────────
-    char board[9];                  // 3×3 grid (tic-tac-toe style)
-
-    // Fill with '.' to represent empty cells
-    fill(board, board + 9, '.');
-
-    cout << "3. Fresh game board:\n";
-    for(int i = 0; i < 9; i++)
-    {
-        cout << board[i] << " ";
-        if((i + 1) % 3 == 0) cout << "\n";
+    std::cout << "Partial array before fill: ";
+    for (int i = 0; i < 10; ++i) {
+        std::cout << partial[i] << " ";  // Output: 0 0 0 0 0 0 0 0 0 0
     }
-    cout << "\n";
+    std::cout << std::endl;
 
+    // Fill only the first 5 elements with 99
+    // partial + 5 points to the 6th element (exclusive)
+    std::fill(partial, partial + 5, 99);
 
-    // ───────────────────────────────────────────────────────────────
-    // Example 4: Filling with different types (double, etc.)
-    // ───────────────────────────────────────────────────────────────
-    double temperatures[7];
-    fill(temperatures, temperatures + 7, 25.5);
-
-    cout << "4. Week temperatures initialized to 25.5°C:\n";
-    for(double t : temperatures) {
-        cout << t << " ";
+    std::cout << "Partial array after fill (first 5 with 99): ";
+    for (int i = 0; i < 10; ++i) {
+        std::cout << partial[i] << " ";  // Output: 99 99 99 99 99 0 0 0 0 0
     }
-    cout << "\n\n";
+    std::cout << std::endl;
 
+    // Example 3: Fill a middle section of an array
+    int middle[8] = {1, 2, 3, 4, 5, 6, 7, 8};
 
-    // ───────────────────────────────────────────────────────────────
-    // Key points about std::fill()
-    // ───────────────────────────────────────────────────────────────
-    cout << "Important notes:\n";
-    cout << "• Needs #include <algorithm>\n";
-    cout << "• Syntax: fill(first, last, value)\n";
-    cout << "• 'last' is ONE PAST the last element (classic C++ range)\n";
-    cout << "• Works on arrays, vectors, deques, raw pointers...\n";
-    cout << "• Linear time → O(n) where n is number of elements\n";
-    cout << "• Much cleaner than writing for-loop every time:\n";
-    cout << "  Instead of: for(int i=0; i<size; i++) arr[i]=0;\n";
-    cout << "  Just write: fill(arr, arr+size, 0);\n\n";
+    std::cout << "Middle array before fill: ";
+    for (int i = 0; i < 8; ++i) {
+        std::cout << middle[i] << " ";  // Output: 1 2 3 4 5 6 7 8
+    }
+    std::cout << std::endl;
 
-    cout << "That's the main idea behind fill() — simple, readable, useful.\n";
+    // Fill elements from index 2 to 5 (positions 3 through 6) with 0
+    // middle + 2 points to the 3rd element, middle + 6 points to the 7th element
+    std::fill(middle + 2, middle + 6, 0);
 
-    cout << "\nPress Enter to exit...\n";
-    cin.get();
+    std::cout << "Middle array after fill (indices 2-5 with 0): ";
+    for (int i = 0; i < 8; ++i) {
+        std::cout << middle[i] << " ";  // Output: 1 2 0 0 0 0 7 8
+    }
+    std::cout << std::endl;
+
+    // Example 4: Filling with different data types - double array
+    double decimals[4];
+
+    // Fill double array with 3.14159
+    std::fill(decimals, decimals + 4, 3.14159);
+
+    std::cout << "Double array filled with 3.14159: ";
+    for (int i = 0; i < 4; ++i) {
+        std::cout << decimals[i] << " ";  // Output: 3.14159 3.14159 3.14159 3.14159
+    }
+    std::cout << std::endl;
+
+    // Example 5: Filling with characters
+    char characters[6];
+
+    // Fill character array with 'A'
+    std::fill(characters, characters + 6, 'A');
+
+    std::cout << "Character array filled with 'A': ";
+    for (int i = 0; i < 6; ++i) {
+        std::cout << characters[i] << " ";  // Output: A A A A A A
+    }
+    std::cout << std::endl;
+
+    // Example 6: Using sizeof to calculate array size
+    int largeArray[20];
+
+    // Calculate number of elements using sizeof
+    // sizeof(largeArray) returns total bytes (80 bytes for int[20] on most systems)
+    // sizeof(largeArray[0]) returns bytes per element (4 bytes for int)
+    int arraySize = sizeof(largeArray) / sizeof(largeArray[0]);
+
+    // Fill using calculated size
+    std::fill(largeArray, largeArray + arraySize, 100);
+
+    std::cout << "First 5 elements of largeArray (calculated size): ";
+    for (int i = 0; i < 5; ++i) {
+        std::cout << largeArray[i] << " ";  // Output: 100 100 100 100 100
+    }
+    std::cout << "..." << std::endl;
 
     return 0;
 }
