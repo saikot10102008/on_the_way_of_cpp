@@ -72,6 +72,7 @@ compile_commands.json
 #no extension executable
 test
 out
-t 
-a 
+t
+a
 testo
+test.cpp
