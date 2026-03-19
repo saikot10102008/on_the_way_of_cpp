@@ -105,3 +105,16 @@ int main() {
 
     return 0;
 }
+
+
+
+
+
+
+
+// Short summary:
+// std::fill(start,end,value);
+// here start index is filled and end index is ignored
+// for instance: start = array_name = 0 and end = array_name + 10 = 0+10
+// so in this case fill function will fill from 0th index to 9th index not the 10th index or 11th element
+// 10th index = 11th element
