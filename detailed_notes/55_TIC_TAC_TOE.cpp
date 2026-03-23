@@ -15,6 +15,8 @@ int main()
     char computer = 'O';
     bool running = true;
 
+    srand(time(0)); // it was originally in computerMove function but I changed so it won't be called repeatedly
+
     drawBoard(spaces);
 
     while (running)
@@ -76,12 +78,13 @@ void playerMove(char *spaces, char player)
             spaces[number] = player;
             break;
         }
-    } while (!(number > 0) || !(number < 8));
+    } while (!(number > 0) || !(number < 8)); // this condition is true for every wrong input so that it can repret until user gives valide input
+    // this condition is only false when 1<=input<=8
 }
 void computerMove(char *spaces, char computer)
 {
     int number;
-    srand(time(0));
+    // srand(time(0)); 
 
     while (true)
     {
